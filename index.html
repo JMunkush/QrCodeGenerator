@@ -1,0 +1,111 @@
+<style>
+    body {
+        background: rgb(202, 55, 207);
+        background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(121, 9, 79, 1) 0%, rgba(92, 58, 121, 1) 53%, rgba(90, 62, 125, 1) 100%, rgba(0, 212, 255, 1) 100%);
+    }
+
+
+    .main-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    label {
+        color: aliceblue;
+        font-size: 25px;
+    }
+
+    input {
+        font-size: 25px;
+        width: 400px;
+        height: 50px;
+    }
+
+
+    .body-container {
+        margin-top: 50px;
+    }
+
+
+    .body-container button {
+        width: 200px;
+        height: 50px;
+        font-size: 20px;
+        margin-left: 25%;
+        margin-top: 10px;
+        background-color: rgb(164, 221, 72);
+        border-radius: 25px;
+    }
+
+    .author {
+        display: flex;
+        justify-content: center;
+        align-items: end;
+    }
+
+    .author p {
+        color: rgb(222, 241, 136);
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    }
+    .content {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .body-container button:hover {
+        cursor: pointer;
+    }
+
+    h2 {
+        font-size: 50px;
+        color: rgb(235, 235, 235);
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+</style>
+
+<body>
+
+
+    <div class="main-container">
+        <div class="header-container">
+            <h2>QR Code Generator</h2>
+        </div>
+
+
+        <div class="body-container">
+            <label for="text">Введите ваш текст: </label>
+            <br>
+            <input id="text" name="content">
+            <br>
+            <button id="generate">Сгенерировать</button>
+            <div class="content">
+
+            </div>
+        </div>
+    </div>
+    <div class="author">
+        <p>by Mukhammedali</p>
+    </div>
+    <script>
+
+        const URL = "http://api.qrserver.com/v1/create-qr-code/?size=300x300&";
+
+
+
+        window.document.getElementById("generate").addEventListener("click", () => {
+            let contentDiv = document.querySelector('.content');
+            let imgElement = document.createElement('img');
+
+            contentDiv.innerHTML = '';
+
+            imgElement.src = URL + "data=" + window.document.getElementById("text").value;
+            imgElement.alt = 'QR';
+
+            contentDiv.appendChild(imgElement);
+        });
+
+    </script>
+</body>

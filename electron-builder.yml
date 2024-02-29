@@ -1,0 +1,9 @@
+appId: com.example.yourapp
+productName: qr-code-generator
+directories:
+  output: build
+win:
+  target: nsis
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
